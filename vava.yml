@@ -1,0 +1,16 @@
+---
+  -
+    name: reboot module
+    hosts: all
+    become: true
+    vars_files:
+      - 
+        vault-pass.yml
+    tasks:
+      -
+        name: reboot server
+        ansible.builtin.reboot:
+          msg: "reboot by ansible"
+          pre_reboot_delay: 5
+          post_reboot_delay: 10
+          test_command: "whoami"
